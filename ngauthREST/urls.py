@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .endpoints import UserViewset
+from user.endpoints import UserViewset
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()

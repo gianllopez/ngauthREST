@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='usermodel',
             name='username',
-            field=models.CharField(error_messages={'unique': 'This username is already taken'}, max_length=12, unique=True),
+            field=models.CharField(error_messages={'unique': 'This username is already taken.'}, max_length=12, unique=True),
         ),
     ]

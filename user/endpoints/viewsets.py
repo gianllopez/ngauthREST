@@ -2,12 +2,12 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from rest_framework.decorators import action
-from .serializers import UserLogupSerializer, UserModel
+from .serializers import LogupSerializer, UserModel
 from django.forms.models import model_to_dict
 
 class UserViewset(GenericViewSet):
 
-  serializer_class = UserLogupSerializer
+  serializer_class = LogupSerializer
   queryset = UserModel.objects.all()
 
   @action(detail=False, methods=['post'])
