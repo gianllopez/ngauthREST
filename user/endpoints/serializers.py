@@ -23,3 +23,6 @@ class LoginSerializer(serializers.Serializer):
   
   def create(self, validated_data):
     return self.user.first()
+
+class VerifyHashSerializer(serializers.Serializer):
+  hash = serializers.CharField(required=True)

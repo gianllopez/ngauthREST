@@ -14,7 +14,7 @@ class UserModel(models.Model):
   hash = models.CharField(max_length=6, unique=True)
 
   def save(self, *args, **kwargs):
-    self.hash = binascii.hexlify(os.urandom(8))
+    self.hash = binascii.hexlify(os.urandom(8)).decode()
     return super().save(*args, **kwargs)
 
   def __str__(self):
