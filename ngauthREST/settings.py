@@ -1,11 +1,11 @@
 from pathlib import Path
-import django_heroku
+import django_heroku, os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-%2y86f%)u0m-5nuls9rb2jn-is8q6*xq^k9%@3ii9@_^^hw!*6'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -19,7 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd frameworks apps:
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
     # My apps:
     'user',
 ]

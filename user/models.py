@@ -15,6 +15,7 @@ class UserModel(models.Model):
 
   def save(self, *args, **kwargs):
     self.hash = binascii.hexlify(os.urandom(8)).decode()
+    self.username = self.username.lower()
     return super().save(*args, **kwargs)
 
   def __str__(self):

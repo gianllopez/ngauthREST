@@ -9,6 +9,7 @@ class UserViewset(GenericViewSet):
 
   serializer_class = LogupSerializer
   queryset = UserModel.objects.all()
+      
 
   serializers = {
     'logup': LogupSerializer,
@@ -42,7 +43,8 @@ class UserViewset(GenericViewSet):
   def verify_hash(self, request):
     user = UserModel.objects.filter(hash=request.data['hash'])
     valid = user.exists()
-    return Response(
-      data={'valid': valid },
-      status=HTTP_200_OK if valid else HTTP_400_BAD_REQUEST)
+    data = {'valid': valid}
+    if valid:
+      data['name'] = user.name
+    return Response(data=data, status=HTTP_200_OK if valid else HTTP_400_BAD_REQUEST)
 
