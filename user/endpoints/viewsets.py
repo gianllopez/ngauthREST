@@ -10,7 +10,6 @@ class UserViewset(GenericViewSet):
   serializer_class = LogupSerializer
   queryset = UserModel.objects.all()
       
-
   serializers = {
     'logup': LogupSerializer,
     'login': LoginSerializer,
@@ -45,6 +44,6 @@ class UserViewset(GenericViewSet):
     valid = user.exists()
     data = {'valid': valid}
     if valid:
-      data['name'] = user.name
+      data['name'] = user.first().name
     return Response(data=data, status=HTTP_200_OK if valid else HTTP_400_BAD_REQUEST)
 
